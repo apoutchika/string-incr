@@ -2,6 +2,13 @@
   "name": "string-incr",
   "version": "1.0.0",
   "description": "Increment string with number",
+  "keywords": [
+    "increment",
+    "string",
+    "number",
+    "incr",
+    "slug",
+  ],
   "main": "index.js",
   "repository": {
     "url": "git@github.com:apoutchika/string-incr.git",
