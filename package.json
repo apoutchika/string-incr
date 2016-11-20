@@ -7,7 +7,7 @@
     "string",
     "number",
     "incr",
-    "slug",
+    "slug"
   ],
   "main": "index.js",
   "repository": {
