@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(str, sep){
+module.exports = function(str, firstAppend){
 
     if (typeof str === 'number'){
         return str + 1;
@@ -14,6 +14,7 @@ module.exports = function(str, sep){
         return '1';
     }
 
+    var name = str.replace(/\d+$/, '');
     var number = str.split('').reduce(function(res, letter){
         if (letter.match(/^\d$/)) {
             res += letter;
@@ -25,18 +26,22 @@ module.exports = function(str, sep){
         return res;
     }, '');
 
-    if(number === '') {
-        number = 1;
 
-        if (typeof sep !== 'string') {
-            sep = ' ';
-        }
-
-        str += sep;
+    if(number !== '') {
+        return name + (Number(number) + 1);
     }
 
+    if (typeof firstAppend === 'number') {
+        return name + ' ' + firstAppend;
+    }
 
-    var name = str.replace(/\d+$/, '');
+    if (typeof firstAppend !== 'string') {
+        return name + ' 2';
+    }
 
-    return name + (Number(number) + 1);
+    if (firstAppend.match(/\d$/)) {
+        return name + firstAppend;
+    }
+
+    return name + firstAppend +'2';
 };

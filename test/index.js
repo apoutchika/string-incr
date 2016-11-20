@@ -6,19 +6,23 @@ chai.should();
 
 describe('Test increment string', function(){
 
-    it('Return first number', function(){
+    it('Return next numbers', function(){
+        incrString('hello 42').should.equal('hello 43');
+        incrString('hello world 42').should.equal('hello world 43');
+    });
+
+    it('Return first number without separator', function(){
         incrString('hello').should.equal('hello 2');
         incrString('hello world').should.equal('hello world 2');
     });
 
     it('Return first number with separator', function(){
-        incrString('hello', '-').should.equal('hello-2');
-        incrString('hello world', '-').should.equal('hello world-2');
-    });
-
-    it('Return next numbers without separator', function(){
-        incrString('hello 42', '-').should.equal('hello 43');
-        incrString('hello world 42', '-').should.equal('hello world 43');
+        incrString('hello', '-1').should.equal('hello-1');
+        incrString('hello', '-2').should.equal('hello-2');
+        incrString('hello', '-42').should.equal('hello-42');
+        incrString('hello world', '-42').should.equal('hello world-42');
+        incrString('hello', 1).should.equal('hello 1');
+        incrString('hello', 2).should.equal('hello 2');
     });
 
     it('Change last number with space', function(){
@@ -51,17 +55,39 @@ describe('Test increment string', function(){
         incrString(41).should.equal(42);
     });
 
-    it("Readme usage works", function(){
+    it("README examples works", function(){
         incrString('Hello world').should.equal('Hello world 2');
         incrString('Hello world 2').should.equal('Hello world 3');
         incrString('Hello world 42').should.equal('Hello world 43');
 
         incrString('Hello world42').should.equal('Hello world43');
-        incrString('Hello world99').should.equal('Hello world100');
+        incrString('Hello 42 world99').should.equal('Hello 42 world100');
         incrString('Hello world-42').should.equal('Hello world-43');
         incrString('Hello world-4242').should.equal('Hello world-4243');
 
-        incrString('Hello world', '-').should.equal('Hello world-2');
-        incrString('Hello world 2', '-').should.equal('Hello world 3');
+        incrString('Hello world', '-1').should.equal('Hello world-1');
+        incrString('Hello world', '-2').should.equal('Hello world-2');
+        incrString('Hello world', 1).should.equal('Hello world 1');
+        incrString('Hello world', 42).should.equal('Hello world 42');
+        incrString('Hello world', '#').should.equal('Hello world#2');
+        incrString('Hello world 2', '-2').should.equal('Hello world 3');
     });
+
+	describe("Backward compatibility", function(){
+		it("1.0.0", function(){
+			incrString('Hello world 42').should.equal('Hello world 43');
+
+			incrString('Hello world').should.equal('Hello world 2');
+			incrString('Hello world 2').should.equal('Hello world 3');
+			incrString('Hello world 42').should.equal('Hello world 43');
+
+			incrString('Hello world42').should.equal('Hello world43');
+			incrString('Hello world99').should.equal('Hello world100');
+			incrString('Hello world-42').should.equal('Hello world-43');
+			incrString('Hello world-4242').should.equal('Hello world-4243');
+
+			incrString('Hello world', '-').should.equal('Hello world-2');
+			incrString('Hello world 2', '-').should.equal('Hello world 3');
+		});
+	});
 });
