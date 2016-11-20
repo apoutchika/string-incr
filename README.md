@@ -5,7 +5,7 @@
 > Increment string with number
 
 
-## install
+## Install
 
 ```
 $ npm install --save string-incr
@@ -38,7 +38,7 @@ stringIncr('Hello world42');
 //=> 'Hello world43'
 
 stringIncr('Hello 42 world99');
-//=> 'Hello world100'
+//=> 'Hello 42 world100'
 
 stringIncr('Hello-world-42');
 //=> 'Hello-world-43'
@@ -47,10 +47,10 @@ stringIncr('Hello-world-4242');
 //=> 'Hello-world-4243'
 ```
 
-### change append text for the first number
+### Change append text for the first number
 
 ```js
-stringIncr('Hello world', '-1');  // with string, finish with number
+stringIncr('Hello world', '-1');  // With string, finish with number
 //=> 'Hello world-1'
 
 stringIncr('Hello world', '-2'); 
