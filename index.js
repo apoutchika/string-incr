@@ -14,7 +14,7 @@ module.exports = function(str, sep){
         return '1';
     }
 
-    let number = str.split('').reduce(function(res, letter){
+    var number = str.split('').reduce(function(res, letter){
         if (letter.match(/^\d$/)) {
             res += letter;
         }
@@ -36,7 +36,7 @@ module.exports = function(str, sep){
     }
 
 
-    let name = str.replace(/\d+$/, '');
+    var name = str.replace(/\d+$/, '');
 
     return name + (Number(number) + 1);
 };
