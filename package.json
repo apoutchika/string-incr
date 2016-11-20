@@ -1,0 +1,18 @@
+{
+  "name": "string-incr",
+  "version": "1.0.0",
+  "description": "Increment string with number",
+  "main": "index.js",
+  "repository": {
+    "url": "git@github.com:apoutchika/string-incr.git",
+    "type": "git"
+  },
+  "scripts": {
+    "test": "mocha test test/index.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+}
