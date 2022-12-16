@@ -1,6 +1,6 @@
 {
   "name": "string-incr",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "packageManager": "yarn@3.2.4",
   "license": "MIT",
   "keywords": [
@@ -10,7 +10,6 @@
     "incr",
     "slug"
   ],
-  "exports": "./dist/index.js",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
   "files": [
