@@ -1,7 +1,5 @@
 # string-incr
 
-[![Build Status](https://travis-ci.org/apoutchika/string-incr.svg?branch=master)](https://travis-ci.org/apoutchika/string-incr)
-
 > Increment string with number
 
 ## Install
