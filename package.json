@@ -10,7 +10,8 @@
     "incr",
     "slug"
   ],
-  "main": "dist",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
   "files": [
     "dist/index.js"
   ],
