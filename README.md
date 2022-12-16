@@ -10,8 +10,13 @@ $ npm install --save string-incr
 
 ## Signature
 
-- String|Number = '' : The string
-- String|Number = ' 2': The append content for the first number (when first parameter don't finish with number)
+```typescript
+stringIncr(str: string | number, firstAppend?: string | number): string;
+stringDecr(str: string | number, firstAppend?: string | number): string;
+```
+
+- str: String|Number = '' : The string
+- firstAppend: String|Number = ' 2': The append content for the first number (when first parameter don't finish with number)
 
 ## Examples
 

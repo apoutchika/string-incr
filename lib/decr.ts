@@ -1,9 +1,9 @@
 export function stringDecr(
   str: string | number,
   firstAppend?: string | number
-) {
+): string {
   if (typeof str === "number") {
-    return str - 1;
+    return `${str - 1}`;
   }
 
   if (typeof str !== "string") {
