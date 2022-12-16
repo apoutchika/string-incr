@@ -1,6 +1,6 @@
 {
   "name": "string-incr",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "packageManager": "yarn@3.2.4",
   "license": "MIT",
   "keywords": [
