@@ -48,8 +48,8 @@ describe("Test decrement string", () => {
   });
 
   it("should decremente number when send number", () => {
-    expect(stringDecr(3)).toBe(2);
-    expect(stringDecr(41)).toBe(40);
+    expect(stringDecr(3)).toBe("2");
+    expect(stringDecr(41)).toBe("40");
   });
 
   it("should README examples works", () => {

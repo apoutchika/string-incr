@@ -44,8 +44,8 @@ describe("Test increment string", () => {
   });
 
   it("should incremente number when send number", () => {
-    expect(stringIncr(3)).toBe(4);
-    expect(stringIncr(41)).toBe(42);
+    expect(stringIncr(3)).toBe("4");
+    expect(stringIncr(41)).toBe("42");
   });
 
   it("should README examples works", () => {
