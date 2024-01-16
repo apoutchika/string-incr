@@ -102,6 +102,6 @@ stringIncr("Hello world 2", "-2"); // The second parameter is only for the first
 
 ## Change log
 
-- 3.0.1 Fix typo in readme
+- 3.1.1 Fix typo in readme
 - 3.0.0 Add decrement
 - 2.0.0 Typescript support
