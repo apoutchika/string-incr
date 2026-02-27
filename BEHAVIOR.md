@@ -47,9 +47,10 @@ stringDecr('test')    // => 'test'     ← no change
 ### Why Remove at 1?
 
 This design makes countdown sequences intuitive:
-- `item-3` → `item-2` → `item-1` → `item` (clean!)
+- `item-3` → `item-2` → `item-1` → `item-` (or `item` with removeSeparator)
 - No awkward `item-0` or `item--1`
 - The base string represents "no number" or "default state"
+- Use `removeSeparator` parameter to clean up trailing separators
 
 ### Edge Cases
 
@@ -60,7 +61,9 @@ This design makes countdown sequences intuitive:
 stringDecr('test 1')   // => 'test'
 stringDecr('test 0')   // => 'test'
 stringDecr('test-1')   // => 'test-'
+stringDecr('test-1', '-')   // => 'test'  ← with removeSeparator
 stringDecr('test-0')   // => 'test-'
+stringDecr('test-0', '-')   // => 'test'  ← with removeSeparator
 
 // No number means no change
 stringDecr('test')     // => 'test'
@@ -149,7 +152,8 @@ stringIncr('my-post-1')   // => 'my-post-2'
 
 // Perfect for countdown
 stringDecr('item-5')      // => 'item-4'
-stringDecr('item-1')      // => 'item'
+stringDecr('item-1')      // => 'item-'
+stringDecr('item-1', '-') // => 'item'  ← with removeSeparator
 ```
 
 ### For Mathematical Operations
