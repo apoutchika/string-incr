@@ -231,7 +231,7 @@ See [BEHAVIOR.md](./BEHAVIOR.md) for detailed edge cases and design decisions.
 ## Use Cases
 
 - Generating sequential file names: `file.txt` → `file 1.txt` → `file 2.txt`
-- Creating unique slugs: `my-post` → `my-post-1` → `my-post-2`
+- Creating unique slugs: `my-post` → `my-post 1` → `my-post 2` (or use `stringIncr('my-post', '-1')` for `my-post-1`)
 - Versioning identifiers: `version-1` → `version-2`
 - Duplicate name handling in any system
 - Countdown sequences: `item-5` → `item-4` → `item-3` → `item-2` → `item-1` → `item`

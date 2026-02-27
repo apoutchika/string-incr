@@ -21,7 +21,7 @@ stringDecr('test 1')  // => 'test'    (extracts 1, removes it)
 ### Why This Design?
 
 This behavior is intentional and consistent with the library's purpose:
-- **Slug generation**: `my-post-1`, `my-post-2`, `my-post-3`
+- **Slug generation**: `my-post 1`, `my-post 2`, `my-post 3` (or use custom separator: `stringIncr('my-post', '-1')` → `my-post-1`)
 - **File naming**: `file-1.txt`, `file-2.txt`
 - **Sequential identifiers**: `item-99`, `item-100`
 - **Countdown sequences**: `item-5` → `item-4` → ... → `item-1` → `item`
