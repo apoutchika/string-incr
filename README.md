@@ -106,6 +106,12 @@ stringIncr('Hello world-42')
 stringIncr('Hello world', '-1')
 //=> 'Hello world-1'
 
+stringIncr('Hello world', '#42')
+//=> 'Hello world#42'
+
+stringIncr('Hello world', 42)
+//=> 'Hello world 42'
+
 stringIncr('Hello world', 1)
 //=> 'Hello world 1'
 
