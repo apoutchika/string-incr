@@ -37,6 +37,9 @@ stringIncr('Hello world 42')
 
 stringDecr('Hello world 42')
 //=> 'Hello world 41'
+
+stringDecr('Hello world 1')
+//=> 'Hello world'
 ```
 
 ### CommonJS
@@ -46,6 +49,12 @@ const { stringIncr, stringDecr } = require('string-incr')
 
 stringIncr('Hello world 42')
 //=> 'Hello world 43'
+
+stringDecr('Hello world 2')
+//=> 'Hello world 1'
+
+stringDecr('Hello world 1')
+//=> 'Hello world'
 ```
 
 ## API
@@ -106,31 +115,41 @@ stringIncr('')
 //=> '1'
 ```
 
-### `stringDecr(str, firstAppend?)`
+### `stringDecr(str)`
 
-Decrements a string that ends with a number, or appends a negative number if none exists.
+Decrements a string that ends with a number. When the number reaches 1 or 0, it removes the number entirely.
 
 #### Parameters
 
 - `str` (string | number): The string or number to decrement
-- `firstAppend` (string | number, optional): The separator/number to use when no number exists (default: `' -1'`)
 
 #### Returns
 
-- `string`: The decremented string
+- `string`: The decremented string, or the base string when number reaches ≤ 1
 
 #### Examples
 
 ```typescript
 // Basic decrement
-stringDecr('Hello world')
-//=> 'Hello world -1'
+stringDecr('Hello world 42')
+//=> 'Hello world 41'
+
+stringDecr('Hello world 3')
+//=> 'Hello world 2'
 
 stringDecr('Hello world 2')
 //=> 'Hello world 1'
 
-stringDecr('Hello world 42')
-//=> 'Hello world 41'
+// Removes number when reaching 1 or 0
+stringDecr('Hello world 1')
+//=> 'Hello world'
+
+stringDecr('Hello world 0')
+//=> 'Hello world'
+
+// No change when no number exists
+stringDecr('Hello world')
+//=> 'Hello world'
 
 // Numbers without spaces
 stringDecr('Hello world42')
@@ -143,35 +162,42 @@ stringDecr('Hello 42 world100')
 stringDecr('Hello world-42')
 //=> 'Hello world-41'
 
-// Custom first append
-stringDecr('Hello world', '-1')
-//=> 'Hello world-1'
+stringDecr('Hello world-1')
+//=> 'Hello world-'
 
-stringDecr('Hello world', 1)
-//=> 'Hello world 1'
-
-stringDecr('Hello world', '#')
-//=> 'Hello world#-1'
-
-// Number input
+// Number input (mathematical operation)
 stringDecr(42)
 //=> '41'
 
-// Edge cases
-stringDecr('')
+stringDecr(0)
 //=> '-1'
 ```
 
 ## Behavior
 
-- Only the **last number** in the string is incremented/decremented
-- If no number exists, a default number is appended (2 for increment, -1 for decrement)
-- The `firstAppend` parameter only affects strings without numbers
+### stringIncr
+
+- Increments the **last number** in the string
+- If no number exists, appends a default number (default: `' 2'`)
+- The `firstAppend` parameter controls what to append when no number exists
 - Numbers can be with or without spaces/separators
-- **Important**: Only trailing **digits** are extracted, not minus signs
+
+### stringDecr
+
+- Decrements the **last number** in the string
+- **When the number reaches 1 or 0, it removes the number entirely**
+- If no number exists, returns the string unchanged
+- Numbers can be with or without spaces/separators
+
+### Important Notes
+
+- Only trailing **digits** are extracted, not minus signs
   - `stringIncr('test-5')` → `'test-6'` (the `-` is a separator, not part of the number)
   - `stringDecr('test-5')` → `'test-4'` (extracts `5`, decrements to `4`)
-  - For mathematical operations on negative numbers, use number input: `stringDecr(-5)` → `'-6'`
+  - `stringDecr('test-1')` → `'test-'` (removes the `1`)
+- For mathematical operations on negative numbers, use number input:
+  - `stringIncr(-5)` → `'-4'`
+  - `stringDecr(-5)` → `'-6'`
 
 See [BEHAVIOR.md](./BEHAVIOR.md) for detailed edge cases and design decisions.
 
@@ -181,6 +207,7 @@ See [BEHAVIOR.md](./BEHAVIOR.md) for detailed edge cases and design decisions.
 - Creating unique slugs: `my-post` → `my-post-2` → `my-post-3`
 - Versioning identifiers: `version-1` → `version-2`
 - Duplicate name handling in any system
+- Countdown sequences: `item-5` → `item-4` → `item-3` → `item-2` → `item-1` → `item`
 
 ## TypeScript
 

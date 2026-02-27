@@ -1,60 +1,52 @@
 import { extractNumber } from './utils'
 
 /**
- * Decrements a string that ends with a number, or appends a negative number if none exists
+ * Decrements a string that ends with a number, removing it when reaching 1 or 0
  * @param str - The string or number to decrement
- * @param firstAppend - The separator/number to use when no number exists (default: ' -1')
- * @returns The decremented string
+ * @returns The decremented string, or the base string when the number reaches 1 or below
  * 
  * @example
  * ```ts
  * stringDecr('Hello world 42') // => 'Hello world 41'
- * stringDecr('Hello world') // => 'Hello world -1'
- * stringDecr('Hello world', '-1') // => 'Hello world-1'
+ * stringDecr('Hello world 2') // => 'Hello world 1'
+ * stringDecr('Hello world 1') // => 'Hello world'
+ * stringDecr('Hello world 0') // => 'Hello world'
+ * stringDecr('Hello world') // => 'Hello world'
  * stringDecr(42) // => '41'
+ * stringDecr(0) // => '-1'
  * ```
  */
-export function stringDecr(
-  str: string | number,
-  firstAppend?: string | number
-): string {
-  // Handle number input
+export function stringDecr(str: string | number): string {
+  // Handle number input - pure mathematical operation
   if (typeof str === 'number') {
     return String(str - 1)
   }
 
-  // Handle invalid input
+  // Handle invalid input - return as-is
   if (typeof str !== 'string') {
-    return '-1'
+    return String(str)
   }
 
-  // Handle empty string
+  // Handle empty string - return as-is
   if (str.length === 0) {
-    return '-1'
+    return str
   }
 
   // Extract base and number
   const { base, number } = extractNumber(str)
 
-  // If a number exists, decrement it
-  if (number !== '') {
-    return base + String(Number(number) - 1)
+  // If no number exists, return as-is
+  if (number === '') {
+    return str
   }
 
-  // No number exists, append first number
-  if (typeof firstAppend === 'number') {
-    return `${base} ${firstAppend}`
+  const numValue = Number(number)
+
+  // If number is 1 or 0, remove it (return just the base, trimmed)
+  if (numValue <= 1) {
+    return base.trimEnd()
   }
 
-  if (typeof firstAppend !== 'string') {
-    return `${base} -1`
-  }
-
-  // If firstAppend ends with a digit, use it directly
-  if (/\d$/.test(firstAppend)) {
-    return base + firstAppend
-  }
-
-  // Otherwise append the separator with '-1'
-  return `${base}${firstAppend}-1`
+  // Otherwise, decrement the number
+  return base + String(numValue - 1)
 }
