@@ -3,7 +3,7 @@ import { extractNumber } from './utils'
 /**
  * Decrements a string that ends with a number, removing it when reaching 1 or 0
  * @param str - The string or number to decrement
- * @param removeSeparator - Optional separator to remove when number reaches 1 or 0
+ * @param removeSeparator - Optional separator to remove when number reaches 1 or 0 (not applied when number > 1)
  * @returns The decremented string, or the base string when the number reaches 1 or below
  * 
  * @example
@@ -13,6 +13,12 @@ import { extractNumber } from './utils'
  * stringDecr('Hello world 1') // => 'Hello world'
  * stringDecr('Hello world-1') // => 'Hello world-'
  * stringDecr('Hello world-1', '-') // => 'Hello world'
+ * 
+ * // removeSeparator only applies when number reaches 1 or 0
+ * stringDecr('Hello world-42', '-') // => 'Hello world-41' (separator kept)
+ * stringDecr('Hello world-2', '-') // => 'Hello world-1' (separator kept)
+ * stringDecr('Hello world-1', '-') // => 'Hello world' (separator removed)
+ * 
  * stringDecr('Hello world#1', '#') // => 'Hello world'
  * stringDecr(42) // => '41'
  * stringDecr(0) // => '-1'

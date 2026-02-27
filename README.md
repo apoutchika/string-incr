@@ -128,7 +128,7 @@ Decrements a string that ends with a number. When the number reaches 1 or 0, it 
 #### Parameters
 
 - `str` (string | number): The string or number to decrement
-- `removeSeparator` (string, optional): Separator to remove when number reaches ≤ 1
+- `removeSeparator` (string, optional): Separator to remove when number reaches ≤ 1 (only applied at 1 or 0, not during normal decrements)
 
 #### Returns
 
@@ -181,6 +181,16 @@ stringDecr('Hello world#1', '#')
 
 stringDecr('Hello_world_1', '_')
 //=> 'Hello_world'
+
+// removeSeparator ONLY applies when number reaches 1 or 0
+stringDecr('Hello world-42', '-')
+//=> 'Hello world-41'  ← separator NOT removed (number > 1)
+
+stringDecr('Hello world-2', '-')
+//=> 'Hello world-1'  ← separator NOT removed (number > 1)
+
+stringDecr('Hello world-1', '-')
+//=> 'Hello world'  ← separator removed (number = 1)
 
 // Number input (mathematical operation)
 stringDecr(42)

@@ -27,6 +27,16 @@ describe('stringDecr', () => {
       expect(stringDecr('hello#1', '#')).toBe('hello')
       expect(stringDecr('hello--1', '--')).toBe('hello')
     })
+
+    it('should NOT remove separator when number is > 1', () => {
+      // removeSeparator only applies when number reaches 1 or 0
+      expect(stringDecr('hello-42', '-')).toBe('hello-41')
+      expect(stringDecr('hello-10', '-')).toBe('hello-9')
+      expect(stringDecr('hello-2', '-')).toBe('hello-1')
+      expect(stringDecr('hello#42', '#')).toBe('hello#41')
+      expect(stringDecr('hello#10', '#')).toBe('hello#9')
+      expect(stringDecr('hello_5', '_')).toBe('hello_4')
+    })
   })
 
   describe('numbers with space', () => {

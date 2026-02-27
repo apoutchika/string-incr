@@ -92,8 +92,10 @@ stringDecr('test 1')   // => 'test'      ← space removed automatically
 stringDecr('test-2')   // => 'test-1'
 stringDecr('test-1')   // => 'test-'     ← dash kept
 
-// With dash separator - remove with parameter
-stringDecr('test-1', '-')   // => 'test'  ← dash removed
+// With dash separator - remove with parameter (ONLY when number ≤ 1)
+stringDecr('test-42', '-')  // => 'test-41'  ← separator NOT removed (42 > 1)
+stringDecr('test-2', '-')   // => 'test-1'   ← separator NOT removed (2 > 1)
+stringDecr('test-1', '-')   // => 'test'     ← separator removed (1 ≤ 1)
 
 // With underscore separator
 stringDecr('test_2')        // => 'test_1'
@@ -101,7 +103,7 @@ stringDecr('test_1')        // => 'test_'     ← underscore kept
 stringDecr('test_1', '_')   // => 'test'      ← underscore removed
 ```
 
-The library automatically trims trailing spaces but keeps other separators unless explicitly removed with the `removeSeparator` parameter.
+The library automatically trims trailing spaces but keeps other separators unless explicitly removed with the `removeSeparator` parameter. **Important**: `removeSeparator` only applies when the number reaches 1 or 0, not during normal decrements.
 
 ## stringIncr Behavior
 
