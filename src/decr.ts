@@ -1,13 +1,4 @@
-/**
- * Extracts the trailing number from a string
- * @param str - The input string
- * @returns Object with the base string and the number found
- */
-function extractNumber(str: string): { base: string; number: string } {
-  const base = str.replace(/\d+$/, '')
-  const number = str.slice(base.length)
-  return { base, number }
-}
+import { extractNumber } from './utils'
 
 /**
  * Decrements a string that ends with a number, or appends a negative number if none exists

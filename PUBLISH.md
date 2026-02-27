@@ -1,57 +1,57 @@
 # Publication Guide
 
-## Avant de publier
+## Before Publishing
 
-1. Vérifier que tous les tests passent:
+1. Verify all tests pass:
    ```bash
    pnpm test
    ```
 
-2. Vérifier le build:
+2. Verify the build:
    ```bash
    pnpm build
    ```
 
-3. Vérifier le linting:
+3. Verify linting:
    ```bash
    pnpm lint
    ```
 
-4. Vérifier les types:
+4. Verify types:
    ```bash
    pnpm typecheck
    ```
 
-5. Vérifier le contenu du package:
+5. Verify package contents:
    ```bash
    npm pack --dry-run
    ```
 
-## Publication manuelle
+## Manual Publication
 
-1. S'assurer d'être connecté à npm:
+1. Ensure you're logged in to npm:
    ```bash
    npm login
    ```
 
-2. Publier:
+2. Publish:
    ```bash
    pnpm publish --access public
    ```
 
-## Publication automatique (recommandé)
+## Automatic Publication (Recommended)
 
-Le workflow GitHub Actions publiera automatiquement le package lorsqu'un tag est poussé:
+The GitHub Actions workflow will automatically publish the package when a tag is pushed:
 
 ```bash
 git push origin master
 git push origin v4.0.0
 ```
 
-## Après la publication
+## After Publication
 
-1. Vérifier sur npmjs.com que le package est bien publié
-2. Tester l'installation dans un nouveau projet:
+1. Verify on npmjs.com that the package is published
+2. Test installation in a new project:
    ```bash
    mkdir test-install
    cd test-install
@@ -59,17 +59,17 @@ git push origin v4.0.0
    npm install string-incr
    ```
 
-3. Créer une release sur GitHub avec les notes du CHANGELOG
+3. Create a GitHub release with CHANGELOG notes
 
-## Checklist de publication
+## Publication Checklist
 
-- [ ] Tous les tests passent
-- [ ] Le build fonctionne
-- [ ] Le linting est OK
-- [ ] Les types sont corrects
-- [ ] Le CHANGELOG est à jour
-- [ ] La version dans package.json est correcte
-- [ ] Le tag git est créé
-- [ ] Le README est à jour
-- [ ] Les exemples fonctionnent
-- [ ] La documentation est complète
+- [ ] All tests pass
+- [ ] Build works
+- [ ] Linting is OK
+- [ ] Types are correct
+- [ ] CHANGELOG is up to date
+- [ ] Version in package.json is correct
+- [ ] Git tag is created
+- [ ] README is up to date
+- [ ] Examples work
+- [ ] Documentation is complete
