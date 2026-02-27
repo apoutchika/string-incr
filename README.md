@@ -168,7 +168,12 @@ stringDecr('')
 - If no number exists, a default number is appended (2 for increment, -1 for decrement)
 - The `firstAppend` parameter only affects strings without numbers
 - Numbers can be with or without spaces/separators
-- Handles negative numbers correctly
+- **Important**: Only trailing **digits** are extracted, not minus signs
+  - `stringIncr('test-5')` → `'test-6'` (the `-` is a separator, not part of the number)
+  - `stringDecr('test-5')` → `'test-4'` (extracts `5`, decrements to `4`)
+  - For mathematical operations on negative numbers, use number input: `stringDecr(-5)` → `'-6'`
+
+See [BEHAVIOR.md](./BEHAVIOR.md) for detailed edge cases and design decisions.
 
 ## Use Cases
 
