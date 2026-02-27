@@ -1,6 +1,6 @@
 {
   "name": "string-incr",
-  "version": "3.1.1",
+  "version": "4.0.0",
   "description": "Increment or decrement strings with numbers",
   "license": "MIT",
   "author": "",
