@@ -280,15 +280,7 @@ pnpm typecheck
 
 ## Changelog
 
-See [CHANGELOG.md](./CHANGELOG.md) for detailed version history.
-
-### Latest (4.0.0)
-- ✨ Dual ESM/CommonJS support
-- 🔄 **BREAKING**: `stringIncr` starts at 1 (was 2)
-- 🔄 **BREAKING**: `stringDecr` removes numbers at 1 or 0
-- 🔄 **BREAKING**: Added `removeSeparator` parameter to `stringDecr`
-
-[Full migration guide →](./CHANGELOG.md)
+Version 4.0.0 adds dual ESM/CommonJS support with breaking changes to default behavior. See [CHANGELOG.md](./CHANGELOG.md) for full details and migration guide.
 
 ## License
 
