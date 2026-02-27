@@ -280,28 +280,15 @@ pnpm typecheck
 
 ## Changelog
 
-### 4.0.0 (Current)
+See [CHANGELOG.md](./CHANGELOG.md) for detailed version history.
+
+### Latest (4.0.0)
 - ✨ Dual ESM/CommonJS support
-- 🔄 **BREAKING**: `stringIncr` now starts at 1 instead of 2
-  - `stringIncr('test')` → `'test 1'` (was `'test 2'`)
-  - To keep v3.x behavior: `stringIncr('test', 2)` → `'test 2'`
+- 🔄 **BREAKING**: `stringIncr` starts at 1 (was 2)
 - 🔄 **BREAKING**: `stringDecr` removes numbers at 1 or 0
-  - `stringDecr('test 1')` → `'test'` (was `'test 0'`)
-  - Removed `firstAppend` parameter
-- 🔄 Migrated from Jest to Vitest
-- 📦 Build with tsup for better optimization
-- 📝 Enhanced documentation
+- 🔄 **BREAKING**: Added `removeSeparator` parameter to `stringDecr`
 
-See [CHANGELOG.md](./CHANGELOG.md) for full details and migration guide.
-
-### 3.1.1
-- 📝 Fix typo in readme
-
-### 3.0.0
-- ✨ Add decrement function
-
-### 2.0.0
-- ✨ TypeScript support
+[Full migration guide →](./CHANGELOG.md)
 
 ## License
 
