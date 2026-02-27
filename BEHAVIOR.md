@@ -86,18 +86,22 @@ stringDecr('test 0')  // => 'test'   ← removes number
 ```typescript
 // With space separator
 stringDecr('test 2')   // => 'test 1'
-stringDecr('test 1')   // => 'test'      ← space removed
+stringDecr('test 1')   // => 'test'      ← space removed automatically
 
-// With dash separator
+// With dash separator - keeps separator by default
 stringDecr('test-2')   // => 'test-1'
 stringDecr('test-1')   // => 'test-'     ← dash kept
 
+// With dash separator - remove with parameter
+stringDecr('test-1', '-')   // => 'test'  ← dash removed
+
 // With underscore separator
-stringDecr('test_2')   // => 'test_1'
-stringDecr('test_1')   // => 'test_'     ← underscore kept
+stringDecr('test_2')        // => 'test_1'
+stringDecr('test_1')        // => 'test_'     ← underscore kept
+stringDecr('test_1', '_')   // => 'test'      ← underscore removed
 ```
 
-The library trims trailing spaces but keeps other separators.
+The library automatically trims trailing spaces but keeps other separators unless explicitly removed with the `removeSeparator` parameter.
 
 ## stringIncr Behavior
 

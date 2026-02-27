@@ -19,6 +19,14 @@ describe('stringDecr', () => {
       expect(stringDecr('hello')).toBe('hello')
       expect(stringDecr('hello world')).toBe('hello world')
     })
+
+    it('should optionally remove separator when number reaches 1 or 0', () => {
+      expect(stringDecr('hello-1')).toBe('hello-')
+      expect(stringDecr('hello-1', '-')).toBe('hello')
+      expect(stringDecr('hello_1', '_')).toBe('hello')
+      expect(stringDecr('hello#1', '#')).toBe('hello')
+      expect(stringDecr('hello--1', '--')).toBe('hello')
+    })
   })
 
   describe('numbers with space', () => {
@@ -84,6 +92,7 @@ describe('stringDecr', () => {
       expect(stringDecr('Hello world-42')).toBe('Hello world-41')
       expect(stringDecr('Hello world-2')).toBe('Hello world-1')
       expect(stringDecr('Hello world-1')).toBe('Hello world-')
+      expect(stringDecr('Hello world-1', '-')).toBe('Hello world')
     })
   })
 
@@ -104,8 +113,10 @@ describe('stringDecr', () => {
       expect(stringDecr('test-5')).toBe('test-4')
       expect(stringDecr('test-2')).toBe('test-1')
       expect(stringDecr('test-1')).toBe('test-')
+      expect(stringDecr('test-1', '-')).toBe('test')
       expect(stringDecr('test_3')).toBe('test_2')
       expect(stringDecr('test_1')).toBe('test_')
+      expect(stringDecr('test_1', '_')).toBe('test')
     })
 
     it('should handle trailing spaces correctly', () => {

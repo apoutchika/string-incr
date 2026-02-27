@@ -121,13 +121,14 @@ stringIncr('')
 //=> '1'
 ```
 
-### `stringDecr(str)`
+### `stringDecr(str, removeSeparator?)`
 
 Decrements a string that ends with a number. When the number reaches 1 or 0, it removes the number entirely.
 
 #### Parameters
 
 - `str` (string | number): The string or number to decrement
+- `removeSeparator` (string, optional): Separator to remove when number reaches ≤ 1
 
 #### Returns
 
@@ -164,12 +165,22 @@ stringDecr('Hello world42')
 stringDecr('Hello 42 world100')
 //=> 'Hello 42 world99'
 
-// With separators
+// With separators - keeps separator by default
 stringDecr('Hello world-42')
 //=> 'Hello world-41'
 
 stringDecr('Hello world-1')
 //=> 'Hello world-'
+
+// With separators - remove separator when specified
+stringDecr('Hello world-1', '-')
+//=> 'Hello world'
+
+stringDecr('Hello world#1', '#')
+//=> 'Hello world'
+
+stringDecr('Hello_world_1', '_')
+//=> 'Hello_world'
 
 // Number input (mathematical operation)
 stringDecr(42)

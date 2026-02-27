@@ -24,11 +24,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Makes sequences more intuitive: `test` → `test 1` → `test 2`
   - Aligns with `stringDecr` behavior for consistency
 - 🔄 **BREAKING**: `stringDecr` behavior changed significantly:
-  - **Removes the `firstAppend` parameter** (no longer needed)
+  - **Removed the `firstAppend` parameter** (no longer needed)
   - **When number reaches 1 or 0, removes it entirely** instead of going negative
+  - **Added `removeSeparator` parameter** to optionally remove trailing separator
   - `stringDecr('test 1')` now returns `'test'` (was `'test 0'`)
   - `stringDecr('test 0')` now returns `'test'` (was `'test -1'`)
   - `stringDecr('test')` now returns `'test'` unchanged (was `'test -1'`)
+  - `stringDecr('test-1')` now returns `'test-'` (keeps separator)
+  - `stringDecr('test-1', '-')` now returns `'test'` (removes separator)
   - Number input unchanged: `stringDecr(0)` still returns `'-1'`
 - 🔄 Migrated from Yarn to pnpm for package management
 - 🔄 Replaced Jest with Vitest for faster testing
@@ -77,6 +80,10 @@ stringDecr('item 2')  // => 'item 1'
 stringDecr('item 1')  // => 'item'      ← CHANGED: removes number
 stringDecr('item 0')  // => 'item'      ← CHANGED: removes number
 stringDecr('item')    // => 'item'      ← CHANGED: no change
+
+// v4.0.0 with separators
+stringDecr('item-1')       // => 'item-'     ← keeps separator
+stringDecr('item-1', '-')  // => 'item'      ← removes separator
 ```
 
 **If you used the `firstAppend` parameter:**
