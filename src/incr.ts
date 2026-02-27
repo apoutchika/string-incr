@@ -3,13 +3,13 @@ import { extractNumber } from './utils'
 /**
  * Increments a string that ends with a number, or appends a number if none exists
  * @param str - The string or number to increment
- * @param firstAppend - The separator/number to use when no number exists (default: ' 2')
+ * @param firstAppend - The separator/number to use when no number exists (default: ' 1')
  * @returns The incremented string
  * 
  * @example
  * ```ts
  * stringIncr('Hello world 42') // => 'Hello world 43'
- * stringIncr('Hello world') // => 'Hello world 2'
+ * stringIncr('Hello world') // => 'Hello world 1'
  * stringIncr('Hello world', '-1') // => 'Hello world-1'
  * stringIncr(42) // => '43'
  * ```
@@ -47,7 +47,7 @@ export function stringIncr(
   }
 
   if (typeof firstAppend !== 'string') {
-    return `${base} 2`
+    return `${base} 1`
   }
 
   // If firstAppend ends with a digit, use it directly
@@ -55,6 +55,6 @@ export function stringIncr(
     return base + firstAppend
   }
 
-  // Otherwise append the separator with '2'
-  return `${base}${firstAppend}2`
+  // Otherwise append the separator with '1'
+  return `${base}${firstAppend}1`
 }

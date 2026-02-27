@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - 🔄 **BREAKING**: Package now uses ESM by default with CJS fallback
+- 🔄 **BREAKING**: `stringIncr` default changed from `' 2'` to `' 1'`
+  - `stringIncr('test')` now returns `'test 1'` (was `'test 2'`)
+  - Makes sequences more intuitive: `test` → `test 1` → `test 2`
+  - Aligns with `stringDecr` behavior for consistency
 - 🔄 **BREAKING**: `stringDecr` behavior changed significantly:
   - **Removes the `firstAppend` parameter** (no longer needed)
   - **When number reaches 1 or 0, removes it entirely** instead of going negative
@@ -43,6 +47,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🐛 Clarified behavior with negative numbers and separators
 
 ### Migration Guide v3 → v4
+
+#### stringIncr Breaking Changes
+
+**Default first number changed:**
+```typescript
+// v3.x behavior
+stringIncr('item')  // => 'item 2'
+
+// v4.0.0 behavior
+stringIncr('item')  // => 'item 1'  ← CHANGED: starts at 1
+
+// To get old behavior, use firstAppend parameter
+stringIncr('item', 2)  // => 'item 2'
+```
 
 #### stringDecr Breaking Changes
 

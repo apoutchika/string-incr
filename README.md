@@ -35,6 +35,9 @@ import { stringIncr, stringDecr } from 'string-incr'
 stringIncr('Hello world 42')
 //=> 'Hello world 43'
 
+stringIncr('Hello world')
+//=> 'Hello world 1'
+
 stringDecr('Hello world 42')
 //=> 'Hello world 41'
 
@@ -66,7 +69,7 @@ Increments a string that ends with a number, or appends a number if none exists.
 #### Parameters
 
 - `str` (string | number): The string or number to increment
-- `firstAppend` (string | number, optional): The separator/number to use when no number exists (default: `' 2'`)
+- `firstAppend` (string | number, optional): The separator/number to use when no number exists (default: `' 1'`)
 
 #### Returns
 
@@ -77,6 +80,9 @@ Increments a string that ends with a number, or appends a number if none exists.
 ```typescript
 // Basic increment
 stringIncr('Hello world')
+//=> 'Hello world 1'
+
+stringIncr('Hello world 1')
 //=> 'Hello world 2'
 
 stringIncr('Hello world 2')
@@ -104,7 +110,7 @@ stringIncr('Hello world', 1)
 //=> 'Hello world 1'
 
 stringIncr('Hello world', '#')
-//=> 'Hello world#2'
+//=> 'Hello world#1'
 
 // Number input
 stringIncr(41)
@@ -178,7 +184,7 @@ stringDecr(0)
 ### stringIncr
 
 - Increments the **last number** in the string
-- If no number exists, appends a default number (default: `' 2'`)
+- If no number exists, appends a default number (default: `' 1'`)
 - The `firstAppend` parameter controls what to append when no number exists
 - Numbers can be with or without spaces/separators
 
@@ -203,8 +209,8 @@ See [BEHAVIOR.md](./BEHAVIOR.md) for detailed edge cases and design decisions.
 
 ## Use Cases
 
-- Generating sequential file names: `file.txt` → `file 2.txt` → `file 3.txt`
-- Creating unique slugs: `my-post` → `my-post-2` → `my-post-3`
+- Generating sequential file names: `file.txt` → `file 1.txt` → `file 2.txt`
+- Creating unique slugs: `my-post` → `my-post-1` → `my-post-2`
 - Versioning identifiers: `version-1` → `version-2`
 - Duplicate name handling in any system
 - Countdown sequences: `item-5` → `item-4` → `item-3` → `item-2` → `item-1` → `item`

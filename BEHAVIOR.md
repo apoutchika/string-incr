@@ -104,21 +104,22 @@ The library trims trailing spaces but keeps other separators.
 ### Consistent Incrementing
 
 ```typescript
-stringIncr('test')     // => 'test 2'    (default: space + 2)
+stringIncr('test')     // => 'test 1'    (default: space + 1)
+stringIncr('test 1')   // => 'test 2'
 stringIncr('test 2')   // => 'test 3'
 stringIncr('test 99')  // => 'test 100'
 
 // Custom first append
 stringIncr('test', '-1')  // => 'test-1'
 stringIncr('test', 1)     // => 'test 1'
-stringIncr('test', '#')   // => 'test#2'
+stringIncr('test', '#')   // => 'test#1'
 ```
 
 ### Symmetry with stringDecr
 
 ```typescript
 // Increment always adds/increases
-stringIncr('test')     // => 'test 2'
+stringIncr('test')     // => 'test 1'
 stringIncr('test 1')   // => 'test 2'
 stringIncr('test 0')   // => 'test 1'
 
@@ -137,8 +138,8 @@ Use the library as-is - it's designed for this:
 
 ```typescript
 // Perfect for slugs
-stringIncr('my-post')     // => 'my-post-2'
-stringIncr('my-post-2')   // => 'my-post-3'
+stringIncr('my-post')     // => 'my-post-1'
+stringIncr('my-post-1')   // => 'my-post-2'
 
 // Perfect for countdown
 stringDecr('item-5')      // => 'item-4'
@@ -168,6 +169,24 @@ If you need negative numbers in strings, consider alternatives:
 ```
 
 ## Breaking Changes in v4.0.0
+
+### stringIncr Changes
+
+**Before (v3.x):**
+```typescript
+stringIncr('test')   // => 'test 2'
+```
+
+**After (v4.0.0):**
+```typescript
+stringIncr('test')   // => 'test 1'  ← starts at 1 instead of 2
+```
+
+**Migration:**
+```typescript
+// To get old behavior
+stringIncr('test', 2)  // => 'test 2'
+```
 
 ### stringDecr Changes
 

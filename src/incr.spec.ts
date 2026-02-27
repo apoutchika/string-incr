@@ -9,8 +9,8 @@ describe('stringIncr', () => {
     })
 
     it('should add first number without separator', () => {
-      expect(stringIncr('hello')).toBe('hello 2')
-      expect(stringIncr('hello world')).toBe('hello world 2')
+      expect(stringIncr('hello')).toBe('hello 1')
+      expect(stringIncr('hello world')).toBe('hello world 1')
     })
 
     it('should add first number with custom separator', () => {
@@ -25,6 +25,7 @@ describe('stringIncr', () => {
 
   describe('numbers with space', () => {
     it('should increment last number with space', () => {
+      expect(stringIncr('toto 1')).toBe('toto 2')
       expect(stringIncr('toto 2')).toBe('toto 3')
       expect(stringIncr('toto 9')).toBe('toto 10')
       expect(stringIncr('toto 10')).toBe('toto 11')
@@ -33,6 +34,7 @@ describe('stringIncr', () => {
 
   describe('numbers without space', () => {
     it('should increment last number without space', () => {
+      expect(stringIncr('toto1')).toBe('toto2')
       expect(stringIncr('toto2')).toBe('toto3')
       expect(stringIncr('toto9')).toBe('toto10')
       expect(stringIncr('toto10')).toBe('toto11')
@@ -67,7 +69,8 @@ describe('stringIncr', () => {
 
   describe('README examples', () => {
     it('should work with basic examples', () => {
-      expect(stringIncr('Hello world')).toBe('Hello world 2')
+      expect(stringIncr('Hello world')).toBe('Hello world 1')
+      expect(stringIncr('Hello world 1')).toBe('Hello world 2')
       expect(stringIncr('Hello world 2')).toBe('Hello world 3')
       expect(stringIncr('Hello world 42')).toBe('Hello world 43')
     })
@@ -84,21 +87,19 @@ describe('stringIncr', () => {
       expect(stringIncr('Hello world', '-2')).toBe('Hello world-2')
       expect(stringIncr('Hello world', 1)).toBe('Hello world 1')
       expect(stringIncr('Hello world', 42)).toBe('Hello world 42')
-      expect(stringIncr('Hello world', '#')).toBe('Hello world#2')
+      expect(stringIncr('Hello world', '#')).toBe('Hello world#1')
       expect(stringIncr('Hello world 2', '-2')).toBe('Hello world 3')
     })
   })
 
   describe('backward compatibility', () => {
-    it('should maintain v1.0.0 behavior', () => {
+    it('should maintain v1.0.0 behavior for existing numbers', () => {
       expect(stringIncr('Hello world 42')).toBe('Hello world 43')
-      expect(stringIncr('Hello world')).toBe('Hello world 2')
       expect(stringIncr('Hello world 2')).toBe('Hello world 3')
       expect(stringIncr('Hello world42')).toBe('Hello world43')
       expect(stringIncr('Hello world99')).toBe('Hello world100')
       expect(stringIncr('Hello world-42')).toBe('Hello world-43')
       expect(stringIncr('Hello world-4242')).toBe('Hello world-4243')
-      expect(stringIncr('Hello world', '-')).toBe('Hello world-2')
       expect(stringIncr('Hello world 2', '-')).toBe('Hello world 3')
     })
   })
