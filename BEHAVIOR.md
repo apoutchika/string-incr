@@ -182,10 +182,10 @@ stringIncr('test')   // => 'test 2'
 stringIncr('test')   // => 'test 1'  ← starts at 1 instead of 2
 ```
 
-**Migration:**
+**Migration - To keep v3.x behavior:**
 ```typescript
-// To get old behavior
-stringIncr('test', 2)  // => 'test 2'
+// Use the firstAppend parameter to start at 2
+stringIncr('test', 2)  // => 'test 2'  ← same as v3.x default
 ```
 
 ### stringDecr Changes

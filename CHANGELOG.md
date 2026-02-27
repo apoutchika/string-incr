@@ -58,8 +58,8 @@ stringIncr('item')  // => 'item 2'
 // v4.0.0 behavior
 stringIncr('item')  // => 'item 1'  ← CHANGED: starts at 1
 
-// To get old behavior, use firstAppend parameter
-stringIncr('item', 2)  // => 'item 2'
+// To get old v3.x behavior, use firstAppend parameter
+stringIncr('item', 2)  // => 'item 2'  ← same as v3.x default
 ```
 
 #### stringDecr Breaking Changes

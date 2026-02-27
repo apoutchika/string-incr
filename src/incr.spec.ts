@@ -21,6 +21,13 @@ describe('stringIncr', () => {
       expect(stringIncr('hello', 1)).toBe('hello 1')
       expect(stringIncr('hello', 2)).toBe('hello 2')
     })
+
+    it('should support old v3 behavior with firstAppend parameter', () => {
+      // To get v3.x behavior (starting at 2), use firstAppend
+      expect(stringIncr('test', 2)).toBe('test 2')
+      expect(stringIncr('hello', 2)).toBe('hello 2')
+      expect(stringIncr('item', 2)).toBe('item 2')
+    })
   })
 
   describe('numbers with space', () => {

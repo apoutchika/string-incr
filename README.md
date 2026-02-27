@@ -253,14 +253,19 @@ pnpm typecheck
 
 ## Changelog
 
-### 4.0.0 (Upcoming)
+### 4.0.0 (Current)
 - ✨ Dual ESM/CommonJS support
+- 🔄 **BREAKING**: `stringIncr` now starts at 1 instead of 2
+  - `stringIncr('test')` → `'test 1'` (was `'test 2'`)
+  - To keep v3.x behavior: `stringIncr('test', 2)` → `'test 2'`
+- 🔄 **BREAKING**: `stringDecr` removes numbers at 1 or 0
+  - `stringDecr('test 1')` → `'test'` (was `'test 0'`)
+  - Removed `firstAppend` parameter
 - 🔄 Migrated from Jest to Vitest
-- 📦 Migrated from Yarn to pnpm
-- 🏗️ Build with tsup for better bundle optimization
-- 📝 Improved documentation
-- ✅ Enhanced test coverage
-- 🧹 Code refactoring for better maintainability
+- 📦 Build with tsup for better optimization
+- 📝 Enhanced documentation
+
+See [CHANGELOG.md](./CHANGELOG.md) for full details and migration guide.
 
 ### 3.1.1
 - 📝 Fix typo in readme
